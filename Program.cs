@@ -65,7 +65,7 @@ namespace Jint.Repl
     {
         internal static void Main2(string[] args)
         {
-            var engine = new Engine(cfg => cfg.AllowClr()).SetValue("print", new Action<object>(Console.WriteLine));
+            var engine = new JintEngineExtended(cfg => cfg.AllowClr()).SetValue("print", new Action<object>(Console.WriteLine));
 
             var filename = args.Length > 0 ? args[0] : "";
             if (!string.IsNullOrEmpty(filename))

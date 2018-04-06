@@ -78,6 +78,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JintExtensions\CJSJintEngine.cs" />
+    <Compile Include="JintExtensions\CommonJs\CommonJSPathResolver.cs" />
+    <Compile Include="JintExtensions\CommonJs\IModule.cs" />
+    <Compile Include="JintExtensions\CommonJs\IModuleResolver.cs" />
+    <Compile Include="JintExtensions\CommonJs\InternalModule.cs" />
+    <Compile Include="JintExtensions\CommonJs\Module.cs" />
+    <Compile Include="JintExtensions\JintEngine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
