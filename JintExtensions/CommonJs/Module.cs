@@ -90,13 +90,13 @@ namespace Jint.CommonJS
                     {sourceCode}
                 }})
             ").GetCompletionValue().As<FunctionInstance>().Call(
-                JsValue.FromObject(this.engine, this),
+                JsValue.FromObject(engine, this),
                 new JsValue[]
                 {
                     moduleObject,
                     this.Exports,
                     Path.GetDirectoryName(filePath),
-                    new ClrFunctionInstance(this.engine, (thisObj, arguments) => Require(arguments.At(0).AsString()))
+                    new ClrFunctionInstance(engine, (thisObj, arguments) => Require(arguments.At(0).AsString()))
                     //  new DelegateWrapper(engine.engine, new Func<string, JsValue>(this.Require)),
                 }
             );

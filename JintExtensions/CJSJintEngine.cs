@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Jint.CommonJS;
 using Jint.Native;
+using Jint.Runtime;
 using Jint.Runtime.Interop;
 
 namespace Jint
@@ -21,6 +22,9 @@ namespace Jint
             {
                 Resolver = new CommonJSPathResolver(this.FileExtensionParsers.Keys);
             }
+            
+            this.SetValue("require",new ClrFunctionInstance(this, (thisObj, arguments) => Require(arguments.At(0).AsString())));
+
         }
 
         public CJSJintEngine(Action<Options> options) : base(options)
@@ -133,6 +137,10 @@ namespace Jint
             }
 
             return new Module(this, moduleName, parent).Exports;
+        }
+        protected JsValue Require(string moduleId)
+        {
+            return Load(moduleId);
         }
     }
 }
