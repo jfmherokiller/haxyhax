@@ -7,9 +7,6 @@ using System.Windows.Forms;
 using Jint.Native;
 using Jint.Runtime;
 
-
-
-
 namespace FormWithConsole
 {
     internal static class NativeMethods
@@ -64,7 +61,7 @@ namespace FormWithConsole
 
 namespace Jint.Repl
 {
-    internal class Program
+    internal static class Program
     {
         internal static void Main2(string[] args)
         {
