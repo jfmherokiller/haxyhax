@@ -12,7 +12,7 @@ namespace Jint.CommonJS
         /// <summary>
         /// This module's children
         /// </summary>
-        public List<IModule> Children { get; } = new List<IModule>();
+        public List<IModule> Children { get; }
 
         protected Module parentModule;
 
@@ -44,6 +44,7 @@ namespace Jint.CommonJS
             }
 
             this.engine = e;
+            Children = new List<IModule>();
 
             if (string.IsNullOrEmpty(moduleId))
             {
@@ -64,14 +65,14 @@ namespace Jint.CommonJS
             string extension = Path.GetExtension(this.filePath);
             var loader = this.engine.FileExtensionParsers[extension] ?? this.engine.FileExtensionParsers["default"];
 
-            e.ModuleCache.Add(Id, this);
+            e.ModuleCache[Id] = this;
 
             loader(this.filePath, this);
         }
 
         protected JsValue Require(string moduleId)
         {
-            return engine.Load(moduleId, this);
+            return engine.Load(moduleId,isMainModule, this);
         }
 
         public JsValue Compile(string sourceCode, string filePath)

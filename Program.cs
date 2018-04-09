@@ -49,11 +49,11 @@ namespace FormWithConsole
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            NativeMethods.AllocConsole();
+            //NativeMethods.AllocConsole();
             Console.WriteLine("Debug Console");
             Jint.Repl.Program.Main2(args);
-            Application.Run(new Form());
-            NativeMethods.FreeConsole();
+            //Application.Run(new Form());
+            //NativeMethods.FreeConsole();
         }
     }
 }

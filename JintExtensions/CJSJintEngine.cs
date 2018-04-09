@@ -23,7 +23,7 @@ namespace Jint
                 Resolver = new CommonJSPathResolver(this.FileExtensionParsers.Keys);
             }
             
-            this.SetValue("require",new ClrFunctionInstance(this, (thisObj, arguments) => Require(arguments.At(0).AsString())));
+            this.SetValue("require2",new ClrFunctionInstance(this, (thisObj, arguments) => Require(arguments.At(0).AsString())));
 
         }
 
@@ -121,7 +121,7 @@ namespace Jint
             return this.Load(mainModuleName);
         }
 
-        public JsValue Load(string moduleName, Module parent = null)
+        public JsValue Load(string moduleName,bool Replace =false, Module parent = null)
         {
             if (string.IsNullOrEmpty(moduleName))
             {
@@ -140,7 +140,7 @@ namespace Jint
         }
         protected JsValue Require(string moduleId)
         {
-            return Load(moduleId);
+            return Load(moduleId,true);
         }
     }
 }
