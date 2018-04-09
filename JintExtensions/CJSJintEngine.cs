@@ -132,7 +132,7 @@ namespace Jint
             if (ModuleCache.ContainsKey(moduleName))
             {
                 module = ModuleCache[moduleName];
-                parent.Children.Add(module);
+                parent?.Children.Add(module);
                 return module.Exports;
             }
 
